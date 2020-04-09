@@ -1,5 +1,9 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import Btn from "./components/button";
+import HookContext from "./components/hookContext";
+import HookReducer from "./components/hookReducer";
+import HookEffect from "./components/hookEffect";
 import {
     BrowserRouter as Router,
     Switch,
@@ -64,9 +68,7 @@ function Home() {
     return (
         <div>
             <h2>Home</h2>
-            <Button variant="contained" color="primary">
-				你好，世界
-            </Button>
+            <HookEffect />
         </div>
     );
 }
@@ -75,6 +77,12 @@ function About() {
     return (
         <div>
             <h2>About</h2>
+            <HookReducer />
+            <HookContext />
+            <Btn />
+            <Button variant="contained" color="primary">
+				你好，世界
+            </Button>
         </div>
     );
 }
