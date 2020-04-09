@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
-const Person = ({ personId }) => {
+const usePerson = personId => {
     const [loading, setLoading] = useState(true);
     const [person, setPerson] = useState({});
-
     useEffect(() => {
         setLoading(true);
         fetch(`https://swapi.co/api/people/${personId}/`)
@@ -14,6 +13,11 @@ const Person = ({ personId }) => {
                 setLoading(false);
             });
     }, [personId]);
+    return [loading, person];
+};
+
+const Person = ({ personId }) => {
+    const [loading, person] = usePerson(personId);
 
     if (loading === true) {
         return <p>Loading ...</p>;
